@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 50px;
+}
+
+body {
+	display: grid;
+	place-content: center;
+	background-color: #fff;
+	min-height: 100vh;
+
+	.scene {
+		position: relative;
+		width: 3rem;
+		height: 3rem;
+
+		.wheel {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			position: relative;
+
+			&::after {
+				position: absolute;
+				content: 'brembo';
+				font-family: 'Rubik Dirt', cursive;
+				font-size: 10px;
+				color: white;
+				text-align: center;
+				align-items: flex-end;
+				background: rgb(180, 5, 5);
+				width: 48px;
+				height: 20px;
+				border-radius: 10px 10px 4px 4px;
+				top: 60%;
+				left: 44%;
+				transform: translate(-50%, -50%);
+				rotate: 90deg;
+				z-index: -1;
+			}
+
+			.tire {
+				position: absolute;
+				inset: 0;
+				background: transparent;
+				border-radius: 50%;
+				border: 0.3em solid #0f0f0f;
+				animation: rotate 4s linear infinite;
+
+				.text {
+					font-size: 0.24rem;
+					position: absolute;
+					color: #d4d4d4;
+					font-family: 'Rubik Dirt', cursive;
+					font-style: italic;
+					font-weight: 300;
+					transform-origin: 0 1.48rem;
+					top: -11%;
+					left: 50%;
+				}
+
+				.rim {
+					position: absolute;
+					background: transparent;
+					top: 0;
+					left: 0;
+					width: 100.28%;
+					height: 100.28%;
+					border-radius: 50%;
+					box-shadow: inset 0 0 0 6px #303030;
+					overflow: hidden;
+
+					&::before {
+						position: absolute;
+						content: '';
+						width: 45px;
+						height: 45px;
+						background-color: rgb(48, 48, 48);
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						border-radius: 50%;
+						border: 5px solid #500909;
+					}
+
+					.center {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						width: 0.4rem;
+						height: 0.4rem;
+						background-color: black;
+						border-radius: 50%;
+						border: 3px solid #444444;
+						z-index: 10;
+					}
+
+					span.column {
+						position: absolute;
+						border: 2px solid #444444;
+						height: 70px;
+						width: 20px;
+						background-color: #0e0e0e;
+						left: 41.5%;
+						top: -8%;
+						transform-origin: 10px 70px;
+						transform: rotate(calc(360deg / 5 * var(--i)));
+						background-image: repeating-linear-gradient(
+							233deg,
+							rgba(255, 255, 255, 0.25),
+							rgba(255, 255, 255, 0.25) 1px,
+							transparent -19px,
+							transparent 2px
+						);
+						background-size: 10px;
+						z-index: 1;
+
+						& i {
+							position: absolute;
+							width: 18px;
+							height: 40px;
+							background-color: #525252;
+							border-right: 2px solid black;
+							rotate: 30deg;
+							transform: translateX(45%);
+							clip-path: polygon(100% 0, 0 0, 100% 83%);
+						}
+					}
+				}
+			}
+		}
+
+		.floor {
+			position: relative;
+			top: -2px;
+			width: 200px;
+			height: 10px;
+			background: black;
+			animation: move 4s linear infinite;
+		}
+	}
+
+	@keyframes rotate {
+		0% {
+			transform: rotate(0deg);
+		}
+		50% {
+			transform: rotate(360deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+
+	@keyframes move {
+		0% {
+			transform: translateX(50px);
+		}
+		50% {
+			transform: translateX(-120px);
+		}
+		100% {
+			transform: translateX(50px);
+		}
+	}
+}
